@@ -17,17 +17,27 @@ const Header = (props) => {
 
     return (
         <header className={styles.Header}>
-            <h1>League Elite</h1>
+            <Link to="/">
+                <h1>League Elite</h1>
+            </Link>
             <nav>
                 <ul>
-                    <li>Sign Up</li>
-                    <li>Login</li>
-                    <li>Log Out</li>
-                    <li>DashBoard</li>
+                    <li>
+                        <Link to="/signup">Sign Up</Link>
+                    </li>
+                    <li>
+                        <Link to="/login">Login</Link>
+                    </li>
+                    <li>
+                        <Link to="/logout">Log Out</Link>
+                    </li>
+                    <li>
+                        <Link to="/dashboard">Dashboard</Link>
+                    </li>
                 </ul>
             </nav>
         </header>
-    )
-}
+    );
+};
 
 export default Header;
