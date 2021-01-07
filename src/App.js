@@ -24,20 +24,20 @@ function App(props) {
       <Header />
         <main>
           <Switch>
-            <Route exact path='/' render={() =>
-              <HomePage />        
+            <Route exact path='/' render={props =>
+              <HomePage {...props}/>        
             } />
-            <Route exact path='/signup' render={() =>
-              <SignupPage />
+            <Route exact path='/signup' render={props =>
+              <SignupPage {...props}/>
             } />
-            <Route exact path='/login' render={() =>
-              <LoginPage />
+            <Route exact path='/login' render={props =>
+              <LoginPage {...props}/>
             } />
-            <Route exact path='/dashboard' render={() =>
-              <DashboardPage />
+            <Route exact path='/dashboard' render={props =>
+              <DashboardPage {...props}/>
             } />
-            <Route exact path='/champions' render={() =>
-              <ChampionsPage />
+            <Route exact path='/champions' render={props =>
+              <ChampionsPage {...props}/>
             } />
           </Switch>
         </main>
