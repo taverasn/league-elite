@@ -1,12 +1,22 @@
-import React from 'react'
+// eslint-disable-next-line
+import { useState, useEffect } from 'react';
 import './App.css';
 
-function App() {
+import HomePage from './pages/HomePage/HomePage';
+// eslint-disable-next-line
+import { Route, Switch, Redirect } from 'react-router-dom';
+// eslint-disable-next-line
+import { getUser, logout } from './services/userService';
+
+
+function App(props) {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>League Elite</h1>
-      </header>
+      <Switch>
+        <Route exact path='/' render={() =>
+          <HomePage />        
+        } />
+      </Switch>
     </div>
   );
 }
