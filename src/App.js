@@ -1,16 +1,15 @@
-import Header from './components/Header';
-import Footer from './components/Footer';
 // eslint-disable-next-line
 import { useState, useEffect } from 'react';
 import './App.css';
 
-// Page Compnents
+// Components
 import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashBoardPage';
-import ChampionPage from './pages/ChampionPage';
-import ChampionsPage from './pages/ChampionsPage'
+import ChampionsPage from './pages/ChampionsPage';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 
 // eslint-disable-next-line
@@ -27,6 +26,18 @@ function App(props) {
           <Switch>
             <Route exact path='/' render={() =>
               <HomePage />        
+            } />
+            <Route exact path='/signup' render={() =>
+              <SignupPage />
+            } />
+            <Route exact path='/login' render={() =>
+              <LoginPage />
+            } />
+            <Route exact path='/dashboard' render={() =>
+              <DashboardPage />
+            } />
+            <Route exact path='/champions' render={() =>
+              <ChampionsPage />
             } />
           </Switch>
         </main>
