@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { signup } from '../../services/userService';
 
 const SignupPage = (props) => {
 
@@ -22,20 +23,27 @@ const SignupPage = (props) => {
         }));
       }
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        console.log('submitteed form data: ', formState);
+    async function handleSubmit(event) {
+        try {
+            event.preventDefault();
 
-        setFormState(getInitialFormState());
+            await signup(formState);
 
-        props.history.push('/dashboard');
+            setFormState(getInitialFormState());
+
+            props.handleSignupOrLogin();
+    
+            props.history.push('/dashboard');
+        } catch (error) {
+            alert(error.message);
+        }
     }
     
 
     return (
         <div className="Page">
             <form onSubmit={handleSubmit}>
-
+                <div>
                     <input 
                     type="text" 
                     placeholder="First Name" 
@@ -43,6 +51,8 @@ const SignupPage = (props) => {
                     name="firstName" 
                     onChange={handleChange} 
                     />
+                </div>
+                <div>
                     <input 
                     type="text" 
                     placeholder="Last Name" 
@@ -50,6 +60,8 @@ const SignupPage = (props) => {
                     name="lastName" 
                     onChange={handleChange} 
                     />
+                </div>
+                <div>
                     <input 
                     type="text" 
                     placeholder="Email" 
@@ -57,6 +69,8 @@ const SignupPage = (props) => {
                     name="email" 
                     onChange={handleChange} 
                     />
+                </div>
+                <div>
                     <input 
                     type="password" 
                     placeholder="Password" 
@@ -64,6 +78,8 @@ const SignupPage = (props) => {
                     name="password" 
                     onChange={handleChange} 
                     />
+                </div>
+                <div>
                     <input 
                     type="password" 
                     placeholder="Confirm Password" 
@@ -71,6 +87,7 @@ const SignupPage = (props) => {
                     name="passwordConf" 
                     onChange={handleChange} 
                     />
+                </div>
                     <button>Signup</button>
                     <Link to='/'>Cancel</Link>
             </form>
