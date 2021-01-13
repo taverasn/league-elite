@@ -1,0 +1,19 @@
+.ChampionCards {
+    justify-content: left;
+}
+
+.ChampionCard {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+
+}
+
+.champName {
+    color: Green;
+    text-align: center;
+    text-decoration: none;
+}
+
+
