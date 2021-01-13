@@ -1,0 +1,17 @@
+.champImage {
+    border-radius: 50%;
+}
+
+.Button {
+    background: none;
+    border: none;
+    margin: 10px;
+}
+
+.Modal {
+    display: flex !important;
+}
+
+.ModalText {
+    margin: auto;
+}
