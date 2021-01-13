@@ -1,5 +1,4 @@
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 // Component Imports
@@ -17,7 +16,7 @@ import { useState, useEffect } from 'react';
 
 // Service Imports
 import { getUser, logout } from './services/userService';
-import { getChampions } from './services/lol-api';
+import { getChampions} from './services/lol-api';
 
 
 function App(props) {
@@ -41,7 +40,7 @@ function App(props) {
   }
 
 
-  const [championData, setChampionData] = useState({
+  const [championsData, setChampionsData] = useState({
     blurb: null,
     id: null,
     image: null,
@@ -52,18 +51,19 @@ function App(props) {
     stats: null,
     tags: null,
     title: null,
-    version: null
+    version: null,
+    searchTerm:'',
   })
 
-  async function getAppData() {
+  async function getChampionsData() {
     const data = await getChampions();
     const mutateData = Object.values(data.data);
-    setChampionData(mutateData);
+    setChampionsData(mutateData);
     console.log(mutateData);
   }
 
   useEffect(() => {
-    getAppData();
+    getChampionsData();
     console.log('effect');
   }, []);
 
@@ -96,11 +96,11 @@ function App(props) {
 
               <ChampionsPage 
               {...props}
-              Champions={championData}
+              Champions={championsData}
               />
               :
               <Redirect to="/login"/>
-            } />
+            } />             
           </Switch>
         </main>
       <Footer />
