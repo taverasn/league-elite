@@ -1,12 +1,27 @@
 import ChampionsCard from '../../components/ChampionsCard';
+import SearchBar from '../../components/SearchBar';
+import './ChampionsPage.css'
 
-import { Link } from 'react-router-dom';
-import { styles } from './ChampionsPage.module.css'
+
+
 
 const ChampionsPage = (props) => {
+
+
+
     return (
-        <div className="ChampionsPage">
-            <ChampionsCard Champions={props.Champions}/>
+        <div className="Page ChampionsPage">
+            <div className="SearchBar">
+            <SearchBar
+            Champions={props.Champions}
+            />
+            </div>
+            <div className="ChampionsCard">             
+                <ChampionsCard
+                Champions={props.Champions}
+                getChampionData={props.getChampionData}
+                />
+            </div>
         </div>
     )
 }
