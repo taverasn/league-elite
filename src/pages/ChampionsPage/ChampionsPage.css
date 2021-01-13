@@ -1,0 +1,14 @@
+.ChampionsPage {
+    flex-direction: column;
+    width: 100vw;
+}
+
+.ChampionsCard {
+    display: flex;
+    justify-content: left;
+    width: 800px;
+}
+
+.SearchBar {
+
+}
