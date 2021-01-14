@@ -23,6 +23,12 @@ const Header = (props) => {
                         <li>
                             <Link to="/champions">Champions</Link>
                         </li>
+                        <li>
+                            <Link to="/createguide">Create Guide</Link>
+                        </li>
+                        <li>
+                            <Link to="/guides">Guides</Link>
+                        </li>
                         </>
                         :
                         <>
