@@ -40,7 +40,7 @@ const ChampionModal = (props) => {
             {
                 props.champion.stats.mp ?
                 <p>
-                        Mana/Energy: {props.champion.stats.mp}
+                        Magic Points: {props.champion.stats.mp}
                 </p>
                         :
                         ""
