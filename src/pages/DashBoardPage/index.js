@@ -1,6 +1,6 @@
 const DashBoardPage = (props) => {
     return (
-        <div className="DashBoardPage">
+        <div className="Page">
 
         </div>
     )

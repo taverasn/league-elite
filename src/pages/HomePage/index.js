@@ -1,6 +1,6 @@
 const HomePage = (props) => {
     return (
-        <div className="HomePage">
+        <div className="Page">
 
         </div>
     )
