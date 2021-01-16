@@ -58,6 +58,7 @@ function App(props) {
     getChampionsData();
   }, []);
 
+  // Guide Functions and State
   const [ guideData, setGuideData ] = useState([]);
 
   useEffect(() => {
