@@ -9,7 +9,7 @@ import DashboardPage from './pages/DashBoardPage';
 import ChampionsPage from './pages/ChampionsPage';
 import GuidesPage from './pages/GuidesPage';
 import CreateGuidePage from './pages/CreateGuidePage';
-import EditGuidePage from './pages/CreateGuidePage';
+import EditGuidePage from './pages/EditGuidePage';
 
 // Component Imports
 import Header from './components/Header';
@@ -22,7 +22,7 @@ import { useState, useEffect } from 'react';
 // Service Imports
 import { getUser, logout } from './services/userService';
 import { getChampions} from './services/lol-api';
-import { fetchGuideData, addGuideData } from './services/guideService';
+import { fetchGuideData, addGuideData, deleteGuideData, updateGuideData, editGuideData } from './services/guideService';
 
 
 function App(props) {
@@ -52,12 +52,10 @@ function App(props) {
     const data = await getChampions();
     const mutateData = Object.values(data.data);
     setChampionsData(mutateData);
-    console.log(mutateData);
   }
 
   useEffect(() => {
     getChampionsData();
-    console.log('effect');
   }, []);
 
   const [ guideData, setGuideData ] = useState([]);
@@ -69,36 +67,36 @@ function App(props) {
   async function getGuides() {
     const data = await fetchGuideData();
     setGuideData(data);
-    console.log(data);
   }
 
   async function createGuide(guide) {
     const data = await addGuideData(guide);
     setGuideData(data);
-    console.log(data);
+    getGuides();
   }
 
-  const deleteGuide = (id) => {
-    setEditing(false)
-
-    setGuideData(guideData.filter((guide) => guide.id !== id))
+  async function deleteGuide(id) {
+    await deleteGuideData(id);
+    setGuideData(guideData.filter((guide) => guide._id !== id));
   }
 
   const [ editing, setEditing ] = useState(false)
-  const initialFormState = { id: null, name: "", type: "" }
+
+  const initialFormState = { id: null, name: "", type: "", role: "", champion: "", items: "", runes: "", abilities: "" }
 
   const [ currentGuide, setCurrentGuide ] = useState(initialFormState)
 
-  const editRow = (guide) => {
+  async function editRow(guide) {
     setEditing(true)
-
-    setCurrentGuide({ id: guide.id, name: guide.name, type: guide.type })
+    await editGuideData(guide._id)
+    setCurrentGuide({ id: guide._id, name: guide.name, type: guide.type, role: guide.role, champion: guide.champion, items: guide.items, runes: guide.runes, abilities: guide.abilities })
   }
 
-  const updateGuide = (id, updatedGuide) => {
+  async function updateGuide(id, updatedGuide) {
     setEditing(false)
-
-    setGuideData(guideData.map((guide) => (guide.id === id ? updatedGuide : guide)))
+    await updateGuideData(id, updatedGuide)
+    setGuideData(guideData.filter((guide) => (guide._id === id ? updatedGuide : guide)))
+    getGuides();
   }
 
   return (
@@ -156,20 +154,27 @@ function App(props) {
               :
               <Redirect to="/login"/>
             } />             
-            <Route exact path='/editguide' render={props =>
-              editing ? 
-              <EditGuidePage 
-              {...props}
-              setEditing={setEditing}
-              currentGuide={currentGuide}
-              updateGuide={updateGuide}
-              createGuide={createGuide}
-              guides={guideData}
-              />
-              :
-              <Redirect 
-              to="/createguide"/>
-            } />             
+            {editing ? 
+              <Route exact path='/editguide' render={props =>
+                <EditGuidePage 
+                {...props}
+                setEditing={setEditing}
+                currentGuide={currentGuide}
+                updateGuide={updateGuide}
+                />
+              } />
+            :
+              <Route exact path='/createguide' render={props =>
+                userState.user ?
+                <CreateGuidePage 
+                {...props}
+                createGuide={createGuide}
+                guides={guideData}
+                />
+                :
+                <Redirect to="/login"/>
+              } />
+            }         
           </Switch>
         </main>
       <Footer />
