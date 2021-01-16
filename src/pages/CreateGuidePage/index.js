@@ -25,8 +25,9 @@ const CreateGuidePage = (props) => {
     function handleSubmit (e) {
         e.preventDefault();
         props.createGuide(guide);
-        props.history.push('/');
-      }
+        props.history.push('/guides');
+        console.log('created');
+    }
 
     function isFormInvalid() {
         return !(guide.name && 
@@ -120,9 +121,7 @@ const CreateGuidePage = (props) => {
                     />
                 </div>    
                 <div className="form-group">    
-                    <Link to="/guides">
-                        <button className="btn btn-primary form-control" disabled={isFormInvalid()}>Add new guide</button>
-                    </Link>               
+                        <button className="btn btn-primary form-control" disabled={isFormInvalid()}>Add new guide</button>              
                     <Link to="/">
                         <button className="btn btn-primary form-control">
                             Cancel
