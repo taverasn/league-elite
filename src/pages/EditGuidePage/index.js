@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const EditGuidePage = (props) => {
 
@@ -8,87 +9,127 @@ const EditGuidePage = (props) => {
         setGuide(props.currentGuide)
     }, [props])
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-
-        setGuide({ ...guide, [name]: value });
+    const handleInputChange = (e) => {
+        setGuide(prevState => ({
+            ...prevState,
+            [e.target.name] : e.target.value
+        }));
     }
 
-    return (
-        <div classname="Page">
-            <form
-            onSubmit={event => {
-                event.preventDefault()
+    function handleSubmit(e) {
+        try {
+            e.preventDefault();
+            props.updateGuide(guide.id, guide);
+            props.history.push('/guides');
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
-                props.updateGuide(guide.id, guide)
-            }}
+    function isFormInvalid() {
+        return !(guide.name && 
+                guide.type && 
+                guide.role && 
+                guide.champion && 
+                guide.items && 
+                guide.runes && 
+                guide.abilities);
+    }
+
+
+    return (
+        <div className="Page">
+            <header>Edit Guide</header>
+            <form
+            onSubmit={handleSubmit}
             > 
-                <label>Name</label>
-                <input 
-                type="text" 
-                name="name" 
-                value={guide.name}
-                onChange={handleInputChange} 
-                />
-                <label>type</label>
-                <select 
-                name="type"
-                value={guide.type}
-                onChange={handleInputChange}
-                >
+                <div className="form-group">                    
+                    <input 
+                    type="text" 
+                    name="name" 
+                    value={guide.name}
+                    onChange={handleInputChange}
+                    placeholder="Name" 
+                    />
+                </div>    
+                <div className="form-group">                    
+                    <select 
+                    name="type"
+                    value={guide.type}
+                    onChange={handleInputChange}
+                    className="form-control"
+                    >
+                        <option value="">Select a Type</option>
                         <option value="Lane">Lane</option>
                         <option value="General">General</option>
                         <option value="Champion">Champion</option>
-                </select>
-                <label>Role</label>
-                <select 
-                name="role"
-                value={guide.role}
-                onChange={handleInputChange}
-                >
-                    <option value="Top">Top</option>
-                    <option value="Jungle">Jungle</option>
-                    <option value="Mid">Mid</option>
-                    <option value="Bot">Bot</option>
-                    <option value="Sup">Sup</option>
-                </select>
-                <label>Champion</label>
-                <input 
-                type="text" 
-                name="champion" 
-                value={guide.champion}
-                onChange={handleInputChange} 
-                />
-                <label>Items</label>
-                <input 
-                type="text" 
-                name="items" 
-                value={guide.items}
-                onChange={handleInputChange} 
-                />
-                <label>Runes</label>
-                <input 
-                type="text" 
-                name="runes" 
-                value={guide.runes}
-                onChange={handleInputChange} 
-                />
-                <label>Abilities</label>
-                <input 
-                type="text" 
-                name="abilities" 
-                value={guide.abilities}
-                onChange={handleInputChange} 
-                />
-                <button>Update guide</button>
-                <button
-                    onClick={() => props.setEditing(false)}
-                >
-                Cancel
-                </button>
+                    </select> 
+                </div> 
+                <div className="form-group">                    
+                    <select 
+                    name="role"
+                    value={guide.role}
+                    onChange={handleInputChange}
+                    className="form-control"
+                    >
+                        <option value="">Select a Role</option>
+                        <option value="Top">Top</option>
+                        <option value="Jungle">Jungle</option>
+                        <option value="Mid">Mid</option>
+                        <option value="Bot">Bot</option>
+                        <option value="Sup">Sup</option>
+                    </select>
+                </div>
+                <div className="form-group">                    
+                    <input 
+                    type="text" 
+                    name="champion" 
+                    value={guide.champion}
+                    onChange={handleInputChange} 
+                    placeholder="Champion" 
+                    />
+                </div>    
+                <div className="form-group">                    
+                    <input 
+                    type="text" 
+                    name="items" 
+                    value={guide.items}
+                    onChange={handleInputChange} 
+                    placeholder="Items" 
+                    />
+                </div>    
+                <div className="form-group">                    
+                    <input 
+                    type="text" 
+                    name="runes" 
+                    value={guide.runes}
+                    onChange={handleInputChange} 
+                    placeholder="Runes" 
+                    />
+                </div>
+                <div className="form-group">                    
+                    <input 
+                    type="text" 
+                    name="abilities" 
+                    value={guide.abilities}
+                    onChange={handleInputChange} 
+                    placeholder="Abilities" 
+                    />
+                </div>
+                <div>
+                        <button 
+                        className="btn btn-primary form-control" 
+                        disabled={isFormInvalid()}
+                        >Update guide</button> 
+                    <Link to="/guides">
+                        <button 
+                        className="btn btn-primary form-control" 
+                        onClick={() => props.setEditing(false)}>Cancel</button>
+                    </Link>    
+                </div>
             </form>
         </div>
     )
 }
 
-export default CreateGuidePage;
+export default EditGuidePage;
