@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import styles from './CreateGuidePage.module.css'
 
@@ -121,12 +120,10 @@ const CreateGuidePage = (props) => {
                     />
                 </div>    
                 <div className="form-group">    
-                        <button className="btn btn-primary form-control" disabled={isFormInvalid()}>Add new guide</button>              
-                    <Link to="/">
+                        <button className="btn btn-primary form-control" disabled={isFormInvalid()}>Add new guide</button>          
                         <button className="btn btn-primary form-control">
                             Cancel
                         </button>
-                    </Link>
                 </div>      
             </form>
         </div>

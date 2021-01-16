@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 const EditGuidePage = (props) => {
 
@@ -117,15 +116,13 @@ const EditGuidePage = (props) => {
                     />
                 </div>
                 <div>
-                        <button 
-                        className="btn btn-primary form-control" 
-                        disabled={isFormInvalid()}
-                        >Update guide</button> 
-                    <Link to="/guides">
-                        <button 
-                        className="btn btn-primary form-control" 
-                        onClick={() => props.setEditing(false)}>Cancel</button>
-                    </Link>    
+                    <button 
+                    className="btn btn-primary form-control" 
+                    disabled={isFormInvalid()}
+                    >Update guide</button> 
+                    <button 
+                    className="btn btn-primary form-control" 
+                    onClick={() => props.setEditing(false)}>Cancel</button>
                 </div>
             </form>
         </div>

@@ -29,19 +29,17 @@ const GuidesPage = (props) => {
                         <td>{guide.runes}</td>
                         <td>{guide.abilities}</td>
                         <td>Actions</td>
-                        <td>
-                            <Link to="/editguide">                       
-                                <button
-                                    onClick={() =>{
-                                        props.editRow(guide)
-                                    }}
-                                >Edit</button>
-                            </Link>
+                        <td>                  
+                            <button
+                                onClick={() =>{
+                                    props.editRow(guide);
+                                    props.history.push('/editguide');
+                                }}
+                            >Edit</button>
                             <button
                                 onClick={() => {
                                     props.deleteGuide(guide._id)
                                     props.history.push('/guides')
-                                    console.log('Deleted')
                                 }}
                             >Delete</button>
                         </td>
