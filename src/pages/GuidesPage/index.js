@@ -19,8 +19,8 @@ const GuidesPage = (props) => {
                 </thead>
                 <tbody>
                     {props.guides.length > 0 ? 
-                        props.guides.map((guide, idx) => 
-                    <tr key={idx}>
+                        props.guides.map((guide) => 
+                    <tr key={guide._id}>
                         <td>{guide.name}</td>
                         <td>{guide.type}</td>
                         <td>{guide.role}</td>
@@ -39,7 +39,9 @@ const GuidesPage = (props) => {
                             </Link>
                             <button
                                 onClick={() => {
-                                    props.deleteGuide(idx)
+                                    props.deleteGuide(guide._id)
+                                    props.history.push('/guides')
+                                    console.log('Deleted')
                                 }}
                             >Delete</button>
                         </td>
