@@ -141,7 +141,10 @@ const EditGuidePage = (props) => {
                     >Update guide</button> 
                     <button 
                     className="btn btn-primary form-control" 
-                    onClick={() => props.setEditing(false)}>Cancel</button>
+                    onClick={() => {
+                        props.setEditing(false);
+                        props.history.push('/guides');    
+                    }}>Cancel</button>
                 </div>
             </form>
         </StyledPage>
