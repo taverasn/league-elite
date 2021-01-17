@@ -63,6 +63,7 @@ const EditGuidePage = (props) => {
                     value={guide.name}
                     onChange={handleInputChange}
                     placeholder="Name" 
+                    className="form-control"
                     />
                 </div>    
                 <div className="form-group">                    
@@ -100,6 +101,7 @@ const EditGuidePage = (props) => {
                     value={guide.champion}
                     onChange={handleInputChange} 
                     placeholder="Champion" 
+                    className="form-control"
                     />
                 </div>    
                 <div className="form-group">                    
@@ -109,6 +111,7 @@ const EditGuidePage = (props) => {
                     value={guide.items}
                     onChange={handleInputChange} 
                     placeholder="Items" 
+                    className="form-control"
                     />
                 </div>    
                 <div className="form-group">                    
@@ -118,6 +121,7 @@ const EditGuidePage = (props) => {
                     value={guide.runes}
                     onChange={handleInputChange} 
                     placeholder="Runes" 
+                    className="form-control"
                     />
                 </div>
                 <div className="form-group">                    
@@ -127,6 +131,7 @@ const EditGuidePage = (props) => {
                     value={guide.abilities}
                     onChange={handleInputChange} 
                     placeholder="Abilities" 
+                    className="form-control"
                     />
                 </div>
                 <div>
