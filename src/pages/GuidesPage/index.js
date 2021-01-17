@@ -8,6 +8,18 @@ const StyledPage = styled.main`
   justify-content: center;
   align-items: center;
   background-color: #232323;
+  table {
+    thead {
+          tr {
+              text-align: center
+          }
+      }
+    tbody {
+        tr {
+            text-align: center
+        }
+    }
+  }
 `;
 
 const GuidesPage = (props) => {
