@@ -35,7 +35,6 @@ const CreateGuidePage = (props) => {
         e.preventDefault();
         props.createGuide(guide);
         props.history.push('/guides');
-        console.log('created');
     }
 
     function isFormInvalid() {
