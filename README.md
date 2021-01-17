@@ -15,7 +15,7 @@
 <img src="public/images/Screenshots/GuidesPageSS.png" width="600">
  
 - Create Guide Page
-<img src="public/images/Screenshots/CreateGuidePageSS.png" width="600">
+<img src="public/images/Screenshots/CreateGuideSS.png" width="600">
  
 - Champions Page
 <img src="public/images/Screenshots/ChampionsPageSS.png" width="600">
