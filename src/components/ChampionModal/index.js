@@ -1,6 +1,11 @@
+// Styling Imports
 import styles from './ChampionModal.module.css';
+
+// React Bootstrap Imports
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+
+// React Imports
 import { useState } from 'react';
 
 const ChampionModal = (props) => {
@@ -40,10 +45,10 @@ const ChampionModal = (props) => {
             {
                 props.champion.stats.mp ?
                 <p>
-                        Magic Points: {props.champion.stats.mp}
+                  Magic Points: {props.champion.stats.mp}
                 </p>
-                        :
-                        ""
+                :
+                ""
             }
           </Modal.Body>
         </Modal>

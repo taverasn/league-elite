@@ -1,16 +1,23 @@
+// Styling Imports
+import styled from 'styled-components';
+
+// Component Imports
 import ChampionsCard from '../../components/ChampionsCard';
 import SearchBar from '../../components/SearchBar';
-import './ChampionsPage.css'
 
-
-
+// Styled Component
+const StyledPage = styled.main`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #232323;
+`;
 
 const ChampionsPage = (props) => {
-
-
-
     return (
-        <div className="Page ChampionsPage">
+        <StyledPage>
             <div className="SearchBar">
             <SearchBar
             Champions={props.Champions}
@@ -22,7 +29,7 @@ const ChampionsPage = (props) => {
                 getChampionData={props.getChampionData}
                 />
             </div>
-        </div>
+        </StyledPage>
     )
 }
 

@@ -1,4 +1,18 @@
+// Styling Imports
+import styled from 'styled-components';
+
+// React Imports
 import { useState, useEffect } from 'react';
+
+
+const StyledPage = styled.main`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #232323;
+`;
 
 const EditGuidePage = (props) => {
 
@@ -37,7 +51,7 @@ const EditGuidePage = (props) => {
 
 
     return (
-        <div className="Page">
+        <StyledPage>
             <header>Edit Guide</header>
             <form
             onSubmit={handleSubmit}
@@ -49,6 +63,7 @@ const EditGuidePage = (props) => {
                     value={guide.name}
                     onChange={handleInputChange}
                     placeholder="Name" 
+                    className="form-control"
                     />
                 </div>    
                 <div className="form-group">                    
@@ -86,6 +101,7 @@ const EditGuidePage = (props) => {
                     value={guide.champion}
                     onChange={handleInputChange} 
                     placeholder="Champion" 
+                    className="form-control"
                     />
                 </div>    
                 <div className="form-group">                    
@@ -95,6 +111,7 @@ const EditGuidePage = (props) => {
                     value={guide.items}
                     onChange={handleInputChange} 
                     placeholder="Items" 
+                    className="form-control"
                     />
                 </div>    
                 <div className="form-group">                    
@@ -104,6 +121,7 @@ const EditGuidePage = (props) => {
                     value={guide.runes}
                     onChange={handleInputChange} 
                     placeholder="Runes" 
+                    className="form-control"
                     />
                 </div>
                 <div className="form-group">                    
@@ -113,6 +131,7 @@ const EditGuidePage = (props) => {
                     value={guide.abilities}
                     onChange={handleInputChange} 
                     placeholder="Abilities" 
+                    className="form-control"
                     />
                 </div>
                 <div>
@@ -122,10 +141,13 @@ const EditGuidePage = (props) => {
                     >Update guide</button> 
                     <button 
                     className="btn btn-primary form-control" 
-                    onClick={() => props.setEditing(false)}>Cancel</button>
+                    onClick={() => {
+                        props.setEditing(false);
+                        props.history.push('/guides');    
+                    }}>Cancel</button>
                 </div>
             </form>
-        </div>
+        </StyledPage>
     )
 }
 

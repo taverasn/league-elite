@@ -1,3 +1,5 @@
+// Functions
+
 function setToken(token) {
     if(token) {
         localStorage.setItem('token', token)
@@ -27,6 +29,8 @@ function getToken() {
     }
     return token;
 }
+
+// Export Functions
 
 export {
     setToken,

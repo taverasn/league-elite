@@ -1,9 +1,19 @@
+// Styling Components
+import styled from 'styled-components';
+
+// React Imports
 import { useState } from 'react';
-import styles from './CreateGuidePage.module.css'
+
+const StyledPage = styled.main`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #232323;
+`;
 
 const CreateGuidePage = (props) => {
-
-
+    
     const [guide, setGuide] = useState({
         name: "", 
         type: "",
@@ -25,7 +35,6 @@ const CreateGuidePage = (props) => {
         e.preventDefault();
         props.createGuide(guide);
         props.history.push('/guides');
-        console.log('created');
     }
 
     function isFormInvalid() {
@@ -39,11 +48,10 @@ const CreateGuidePage = (props) => {
     }
 
     return (
-        <div className="Page">
+        <StyledPage>
             <header>Create Guide</header>
             <form
             onSubmit={handleSubmit}
-            className={styles.Form}
             >
                 <div className="form-group">                    
                     <input 
@@ -52,6 +60,7 @@ const CreateGuidePage = (props) => {
                     value={guide.name}
                     onChange={handleInputChange}
                     placeholder="Name" 
+                    className="form-control"
                     />
                 </div>    
                 <div className="form-group">                    
@@ -89,6 +98,7 @@ const CreateGuidePage = (props) => {
                     value={guide.champion}
                     onChange={handleInputChange} 
                     placeholder="Champion" 
+                    className="form-control"
                     />
                 </div>    
                 <div className="form-group">                    
@@ -98,6 +108,7 @@ const CreateGuidePage = (props) => {
                     value={guide.items}
                     onChange={handleInputChange} 
                     placeholder="Items" 
+                    className="form-control"
                     />
                 </div>    
                 <div className="form-group">                    
@@ -107,6 +118,7 @@ const CreateGuidePage = (props) => {
                     value={guide.runes}
                     onChange={handleInputChange} 
                     placeholder="Runes" 
+                    className="form-control"
                     />
                 </div>
                 <div className="form-group">                    
@@ -116,7 +128,7 @@ const CreateGuidePage = (props) => {
                     value={guide.abilities}
                     onChange={handleInputChange} 
                     placeholder="Abilities" 
-                    
+                    className="form-control"
                     />
                 </div>    
                 <div className="form-group">    
@@ -126,7 +138,7 @@ const CreateGuidePage = (props) => {
                         </button>
                 </div>      
             </form>
-        </div>
+        </StyledPage>
     )
 }
 

@@ -1,10 +1,25 @@
+// Styling Imports
+import styled from 'styled-components';
+// React Imports
 import { useState } from 'react';
-import { login } from '../../services/userService';
 import { Link } from 'react-router-dom';
+
+// Service Imports
+import { login } from '../../services/userService';
+
+// Styled Components
+const StyledPage = styled.main`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #232323;
+`;
 
 const LoginPage = (props) => {
 
-        const [formState, setFormState] = useState(getInitialFormState());
+    const [formState, setFormState] = useState(getInitialFormState());
 
     function getInitialFormState() {
         return {
@@ -38,7 +53,7 @@ const LoginPage = (props) => {
     
 
     return (
-        <div className="Page">
+        <StyledPage>
             <form onSubmit={handleSubmit}>
                 <div>
                     <input 
@@ -61,7 +76,7 @@ const LoginPage = (props) => {
                     <button>Login</button>
                     <Link to='/'>Cancel</Link>
             </form>
-        </div>
+        </StyledPage>
     );
 }
 

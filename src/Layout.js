@@ -1,5 +1,6 @@
+// Styling
+import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 
 // Page Imports
 import HomePage from './pages/HomePage';
@@ -24,9 +25,19 @@ import { getUser, logout } from './services/userService';
 import { getChampions} from './services/lol-api';
 import { fetchGuideData, addGuideData, deleteGuideData, updateGuideData, editGuideData } from './services/guideService';
 
+// Styled Component
+const StyledLayout = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  main {
+    flex-grow: 1;
+  }
+`;
 
-function App(props) {
+function Layout(props) {
 
+  // User Functions and State
   const [ userState, setUserState ] = useState({
     user: getUser()
   });
@@ -45,8 +56,8 @@ function App(props) {
     props.history.push('/');
   }
 
-
-  const [championsData, setChampionsData] = useState([])
+  // Champion Functions and State
+  const [championsData, setChampionsData] = useState([]);
 
   async function getChampionsData() {
     const data = await getChampions();
@@ -70,6 +81,7 @@ function App(props) {
     setGuideData(data);
   }
 
+  // Full CRUD Functions for Guides
   async function createGuide(guide) {
     const data = await addGuideData(guide);
     setGuideData(data);
@@ -101,7 +113,7 @@ function App(props) {
   }
 
   return (
-    <div className="App">
+    <StyledLayout>
       <Header handleLogout={handleLogout} user={userState.user} />
         <main>
           <Switch>
@@ -179,8 +191,8 @@ function App(props) {
           </Switch>
         </main>
       <Footer />
-    </div>
+    </StyledLayout>
   );
 }
 
-export default withRouter(App);
+export default withRouter(Layout);
