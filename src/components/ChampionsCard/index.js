@@ -1,24 +1,32 @@
+// Styling Imports
+import styled from 'styled-components';
+
+// Component Imports
 import ChampionModal from '../ChampionModal';
-import styles from './ChampionsCard.module.css';
 
-
+// Styled Component
+const StyledChampionCard = styled.div`
+    div {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+`;
 
 
 const ChampionsCard = (props) => {
-
     return (
-        <div className={"Page" + styles.ChampionCards}>
-            <div className={styles.ChampionCard}>
+        <StyledChampionCard>
+            <div>
                 {props.Champions.map((champion, idx) =>
                 <ChampionModal
-                className={styles.Modal}
                 champion={champion}
-                key={idx}
+                key={champion.name}
                 />
-
                 )}
             </div>
-        </div>
+        </StyledChampionCard>
     );
 };
 

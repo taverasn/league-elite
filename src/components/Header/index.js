@@ -1,11 +1,31 @@
+// Styling Imports
+import styled from 'styled-components';
+
+// React Components
 import { Link } from 'react-router-dom';
 
-import styles from './Header.module.css';
+// Styled Component
+const StyledHeader = styled.header`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    color: white;
+    box-shadow: 3px 3px 5px 3px lightgrey;
+    nav > ul {
+    display: flex;
+    list-style: none;
+    }
+    nav > ul li {
+    font-size: 25px;
+    margin-right: 20px;
+    }
+`;
 
 const Header = (props) => {
 
     return (
-        <header className={styles.Header}>
+        <StyledHeader>
             <Link to="/">
                 <h1>League Elite</h1>
             </Link>
@@ -42,7 +62,7 @@ const Header = (props) => {
                     }
                 </ul>
             </nav>
-        </header>
+        </StyledHeader>
     );
 };
 

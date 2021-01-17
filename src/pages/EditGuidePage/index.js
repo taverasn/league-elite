@@ -1,4 +1,18 @@
+// Styling Imports
+import styled from 'styled-components';
+
+// React Imports
 import { useState, useEffect } from 'react';
+
+
+const StyledPage = styled.main`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #232323;
+`;
 
 const EditGuidePage = (props) => {
 
@@ -37,7 +51,7 @@ const EditGuidePage = (props) => {
 
 
     return (
-        <div className="Page">
+        <StyledPage>
             <header>Edit Guide</header>
             <form
             onSubmit={handleSubmit}
@@ -125,7 +139,7 @@ const EditGuidePage = (props) => {
                     onClick={() => props.setEditing(false)}>Cancel</button>
                 </div>
             </form>
-        </div>
+        </StyledPage>
     )
 }
 

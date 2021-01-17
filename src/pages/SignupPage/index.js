@@ -1,6 +1,22 @@
+// Styling Imports
+import styled from 'styled-components';
+
+// React Imports
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+// Service Imports
 import { signup } from '../../services/userService';
+
+// Styled Component
+const StyledPage = styled.main`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #232323;
+`;
 
 const SignupPage = (props) => {
 
@@ -41,7 +57,7 @@ const SignupPage = (props) => {
     
 
     return (
-        <div className="Page">
+        <StyledPage>
             <form onSubmit={handleSubmit}>
                 <div>
                     <input 
@@ -91,7 +107,7 @@ const SignupPage = (props) => {
                     <button>Signup</button>
                     <Link to='/'>Cancel</Link>
             </form>
-        </div>
+        </StyledPage>
     )
 }
 

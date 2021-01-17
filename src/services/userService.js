@@ -1,9 +1,11 @@
+// Imports
 import { setToken, getUserFromToken, removeToken } from './tokenService';
+
+// Variables
 const BASE_URL = 'http://localhost:3001/api/users';
 
 
-
-
+// Functions
 function signup(user) {
     return fetch(BASE_URL + '/signup', {
         method: 'POST',
@@ -41,7 +43,7 @@ function getUser() {
 }
 
 
-// export functions
+// Export Functions
 
 export {
     signup,

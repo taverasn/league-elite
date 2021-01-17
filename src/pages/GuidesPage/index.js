@@ -1,26 +1,37 @@
-import { Link } from 'react-router-dom';
+// Styling Imports
+import styled from 'styled-components';
 
-import styles from './GuidesPage.module.css';
+// Styled Components
+const StyledPage = styled.main`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #232323;
+`;
 
 const GuidesPage = (props) => {
     return (
-        <div className="Page">
-            <table className={styles.Table}>
-                <thead>
+        <StyledPage>
+            <table className="table table-light table-striped table-bordered table-hover table-sm">
+                <thead className="thead-dark">
                     <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Role</th>
-                        <th>Champion</th>
-                        <th>Items</th>
-                        <th>Runes</th>
-                        <th>Abilities</th>
+                        <th scope="col">Guide</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Champion</th>
+                        <th scope="col">Items</th>
+                        <th scope="col">Runes</th>
+                        <th scope="col">Abilities</th>
+                        <th scope="col-2">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {props.guides.length > 0 ? 
-                        props.guides.map((guide) => 
+                        props.guides.map((guide, idx) => 
                     <tr key={guide._id}>
+                        <th scope="row">{idx + 1}</th>
                         <td>{guide.name}</td>
                         <td>{guide.type}</td>
                         <td>{guide.role}</td>
@@ -28,7 +39,6 @@ const GuidesPage = (props) => {
                         <td>{guide.items}</td>
                         <td>{guide.runes}</td>
                         <td>{guide.abilities}</td>
-                        <td>Actions</td>
                         <td>                  
                             <button
                                 onClick={() =>{
@@ -52,7 +62,7 @@ const GuidesPage = (props) => {
                     }
                 </tbody>
             </table>
-        </div>
+        </StyledPage>
     )
 }
 

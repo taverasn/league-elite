@@ -1,7 +1,12 @@
+// Imports
 import { getToken } from './tokenService';
 
+// Variables
 const BASE_URL = 'http://localhost:3001/api/guides/';
 
+//Functions
+
+// Returns All Guides from API
 function fetchGuideData() {
     const options = {
         method: 'GET',
@@ -13,6 +18,7 @@ function fetchGuideData() {
     return fetch(BASE_URL, options).then(res => res.json());
 };
 
+// Sends New Guides to API
 function addGuideData(guide) {
     const options = {
         method: 'POST',
@@ -25,6 +31,7 @@ function addGuideData(guide) {
         return fetch(BASE_URL, options).then(res => res.json());
 };
 
+// Deletes Guides by ID and Removes them from API
 function deleteGuideData(id) {
     const options = {
         method: 'DELETE',
@@ -36,6 +43,7 @@ function deleteGuideData(id) {
     return fetch(BASE_URL + id, options).then(res => res.json());
 };
 
+// Returns a Single Guide
 function editGuideData(id) {
     const options = {
         method: 'GET',
@@ -47,6 +55,7 @@ function editGuideData(id) {
     return fetch(BASE_URL + id, options).then(res => res.json());
 }
 
+// Sends an Updated Guide to the API by ID
 function updateGuideData(id, updatedGuide) {
     const options = {
         method: 'PUT',
@@ -60,6 +69,7 @@ function updateGuideData(id, updatedGuide) {
     return fetch(BASE_URL + id, options).then(res => res.json());
 };
 
+// Export Functions
 
 export {
     fetchGuideData,
