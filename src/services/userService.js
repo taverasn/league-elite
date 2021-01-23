@@ -8,7 +8,7 @@ const DATABASE_BASE_URL = 'https://league-elite-backend.herokuapp.com/api/users'
 
 // Functions
 function signup(user) {
-    return fetch(BASE_URL + '/signup', {
+    return fetch(DATABASE_BASE_URL + '/signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'Application/json'
@@ -22,7 +22,7 @@ function signup(user) {
 }
 
 function login(credentials) {
-    return fetch(BASE_URL + '/login', {
+    return fetch(DATABASE_BASE_URL + '/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'Application/json'
