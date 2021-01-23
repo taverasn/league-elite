@@ -62,7 +62,7 @@
 
 ### Open Application
 
-- 
+- https://league-elite.netlify.app/
 
 ## Unsolved Problems
 
