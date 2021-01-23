@@ -32,10 +32,10 @@
 - HomePage Logged In
 <img src="public/images/WireFrames/HomePageLoggedInWireFrame.png" width="600">
 
-- HomePage Logged In
+- HomePage Logged Out
 <img src="public/images/WireFrames/HomePageWireLoggedOutFrame.png" width="600">
 
-- HomePage Logged In
+- Champions Page
 <img src="public/images/WireFrames/ChampionsPageWireFrame.png" width="600">
 
 ## Technologies

@@ -1,3 +1,6 @@
+// React Imports
+import { Link } from 'react-router-dom';
+
 // Styling Imports
 import styled from 'styled-components';
 
@@ -11,12 +14,20 @@ const StyledPage = styled.main`
   table {
     thead {
           tr {
-              text-align: center
+              text-align: center;
           }
       }
     tbody {
         tr {
-            text-align: center
+            text-align: center;
+            td {
+                button {
+                    width: 75px;
+                }
+                a {
+                    width: 75px;
+                }
+            }
         }
     }
   }
@@ -51,20 +62,46 @@ const GuidesPage = (props) => {
                         <td>{guide.items}</td>
                         <td>{guide.runes}</td>
                         <td>{guide.abilities}</td>
-                        <td>                  
-                            <button
-                                onClick={() =>{
-                                    props.editRow(guide);
-                                    props.history.push('/editguide');
-                                }}
-                            >Edit</button>
-                            <button
-                                onClick={() => {
-                                    props.deleteGuide(guide._id)
-                                    props.history.push('/guides')
-                                }}
-                            >Delete</button>
+                        {props.user._id === guide.userId ?
+                        
+                        <td>
+                            <div className="btn-group mr-2">
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={() =>{
+                                        props.editRow(guide);
+                                        props.history.push('/editguide');
+                                    }}
+                                >Edit</button>           
+                            </div>                  
+                            <div className="btn-group mr-2">                                
+                                <button
+                                    className="btn btn-danger"
+                                    onClick={() => {
+                                        props.deleteGuide(guide._id)
+                                        props.history.push('/guides')
+                                    }}
+                                >Delete</button>
+                            </div>
+                            <div className="btn-group mr-2">
+                                <Link 
+                                className="btn btn-dark"
+                                key={guide._id} 
+                                to={`/guides/${guide._id}`}   
+                                >View</Link>
+                            </div>                  
                         </td>
+                        :                       
+                        
+                        <td>
+                            <Link 
+                            className="btn btn-dark mr-2"
+                            key={guide._id} 
+                            to={`/guides/${guide._id}`}   
+                            >View</Link>
+                        </td>
+                        
+                        }
                     </tr>
                         )
                     :

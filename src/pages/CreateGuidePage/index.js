@@ -15,6 +15,7 @@ const StyledPage = styled.main`
 const CreateGuidePage = (props) => {
     
     const [guide, setGuide] = useState({
+        userId: "",
         name: "", 
         type: "",
         role: "",
@@ -27,6 +28,7 @@ const CreateGuidePage = (props) => {
     const handleInputChange = (e) => {
         setGuide(prevState => ({
             ...prevState,
+            userId: props.user._id,
             [e.target.name] : e.target.value
         }));
     }
@@ -92,14 +94,17 @@ const CreateGuidePage = (props) => {
                     </select>
                 </div>
                 <div className="form-group">                    
-                    <input 
-                    type="text" 
+                    <select
                     name="champion" 
                     value={guide.champion}
                     onChange={handleInputChange} 
-                    placeholder="Champion" 
                     className="form-control"
-                    />
+                    >
+                        <option value="">Select a Champion</option>
+                        {props.champions.map((champion) =>
+                            <option value={champion.id}>{champion.id}</option>
+                        )}
+                    </select>
                 </div>    
                 <div className="form-group">                    
                     <input 
@@ -133,7 +138,7 @@ const CreateGuidePage = (props) => {
                 </div>    
                 <div className="form-group">    
                         <button className="btn btn-primary form-control" disabled={isFormInvalid()}>Add new guide</button>          
-                        <button className="btn btn-primary form-control">
+                        <button className="btn btn-danger form-control">
                             Cancel
                         </button>
                 </div>      

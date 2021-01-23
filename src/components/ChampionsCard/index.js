@@ -19,7 +19,7 @@ const ChampionsCard = (props) => {
     return (
         <StyledChampionCard>
             <div>
-                {props.Champions.map((champion, idx) =>
+                {props.champions.map((champion, idx) =>
                 <ChampionModal
                 champion={champion}
                 key={champion.name}
