@@ -11,6 +11,7 @@ import ChampionsPage from './pages/ChampionsPage';
 import GuidesPage from './pages/GuidesPage';
 import CreateGuidePage from './pages/CreateGuidePage';
 import EditGuidePage from './pages/EditGuidePage';
+import GuideDetailPage from './pages/GuideDetailPage';
 
 // Component Imports
 import Header from './components/Header';
@@ -83,13 +84,13 @@ function Layout(props) {
 
   // Full CRUD Functions for Guides
   async function createGuide(guide) {
-    const data = await addGuideData(guide);
+    const data = await addGuideData(guide, userState.user._id);
     setGuideData(data);
     getGuides();
   }
 
   async function deleteGuide(id) {
-    await deleteGuideData(id);
+    await deleteGuideData(id, userState.user._id);
     setGuideData(guideData.filter((guide) => guide._id !== id));
   }
 
@@ -118,7 +119,10 @@ function Layout(props) {
         <main>
           <Switch>
             <Route exact path='/' render={props =>
-              <HomePage {...props}/>        
+              <HomePage 
+              {...props}
+              champions={championsData}
+              />        
             } />
             <Route exact path='/signup' render={props =>
               <SignupPage 
@@ -138,10 +142,9 @@ function Layout(props) {
             } />
             <Route exact path='/champions' render={props =>
               userState.user ?
-
               <ChampionsPage 
               {...props}
-              Champions={championsData}
+              champions={championsData}
               />
               :
               <Redirect to="/login"/>
@@ -153,6 +156,19 @@ function Layout(props) {
               guides={guideData}
               editRow={editRow}
               deleteGuide={deleteGuide}
+              user={userState.user}
+              />
+              :
+              <Redirect to="/login"/>
+            } />             
+            <Route exact path='/guides/:id' render={props =>
+              userState.user ?
+              <GuideDetailPage 
+              {...props}
+              editRow={editRow}
+              deleteGuide={deleteGuide}
+              user={userState.user}
+              guide={guideData.filter((guide) => (guide._id === props.match.params.id))}
               />
               :
               <Redirect to="/login"/>
@@ -163,6 +179,8 @@ function Layout(props) {
               {...props}
               createGuide={createGuide}
               guides={guideData}
+              user={userState.user}
+              champions={championsData}
               />
               :
               <Redirect to="/login"/>
@@ -174,6 +192,8 @@ function Layout(props) {
                 setEditing={setEditing}
                 currentGuide={currentGuide}
                 updateGuide={updateGuide}
+                user={userState.user}
+                champions={championsData}
                 />
               } />
             :
@@ -183,6 +203,8 @@ function Layout(props) {
                 {...props}
                 createGuide={createGuide}
                 guides={guideData}
+                user={userState.user}
+                champions={championsData}
                 />
                 :
                 <Redirect to="/login"/>
