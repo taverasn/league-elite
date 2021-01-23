@@ -2,7 +2,7 @@
 import { getToken } from './tokenService';
 
 // Variables
-const BASE_URL = 'http://localhost:3001/api/guides/';
+const GUIDES_BASE_URL = 'https://league-elite-backend.herokuapp.com/api/guides/';
 
 //Functions
 
@@ -15,7 +15,7 @@ function fetchGuideData() {
         }
     }
 
-    return fetch(BASE_URL, options).then(res => res.json());
+    return fetch(GUIDES_BASE_URL, options).then(res => res.json());
 };
 
 // Sends New Guides to API
@@ -28,7 +28,7 @@ function addGuideData(guide) {
           body: JSON.stringify(guide)
         }
 
-        return fetch(BASE_URL, options).then(res => res.json());
+        return fetch(GUIDES_BASE_URL, options).then(res => res.json());
 };
 
 // Deletes Guides by ID and Removes them from API
@@ -40,7 +40,7 @@ function deleteGuideData(id) {
         },
     }
 
-    return fetch(BASE_URL + id, options).then(res => res.json());
+    return fetch(GUIDES_BASE_URL + id, options).then(res => res.json());
 };
 
 // Returns a Single Guide
@@ -52,7 +52,7 @@ function editGuideData(id) {
         },
     }
 
-    return fetch(BASE_URL + id, options).then(res => res.json());
+    return fetch(GUIDES_BASE_URL + id, options).then(res => res.json());
 }
 
 // Sends an Updated Guide to the API by ID
@@ -66,7 +66,7 @@ function updateGuideData(id, updatedGuide) {
         body: JSON.stringify(updatedGuide)
     }
 
-    return fetch(BASE_URL + id, options).then(res => res.json());
+    return fetch(GUIDES_BASE_URL + id, options).then(res => res.json());
 };
 
 // Export Functions
