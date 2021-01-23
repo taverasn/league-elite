@@ -16,7 +16,7 @@ const ChampionModal = (props) => {
       <>
         <Button  className={styles.Button} variant="primary" onClick={() => setShow(true)}>
             <img 
-                src={"http://ddragon.leagueoflegends.com/cdn/11.1.1/img/champion/" + props.champion.id + ".png"} 
+                src={"https://ddragon.leagueoflegends.com/cdn/11.1.1/img/champion/" + props.champion.id + ".png"} 
                 alt=""
                 className={styles.champImage}
             ></img>                    

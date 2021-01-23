@@ -39,7 +39,7 @@ const ChampionsCarousel = (props) => {
             >
                 <img
                 className="d-block"
-                src={"http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + champion.id + "_0.jpg"}
+                src={"https://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + champion.id + "_0.jpg"}
                 alt={champion.id}
                 />
             </Carousel.Item>
