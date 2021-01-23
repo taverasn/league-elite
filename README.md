@@ -32,11 +32,7 @@
 - HomePage Logged In
 <img src="public/images/WireFrames/HomePageLoggedInWireFrame.png" width="600">
 
-<<<<<<< HEAD
 - HomePage Logged Out
-=======
-- HomePage Logged In
->>>>>>> development
 <img src="public/images/WireFrames/HomePageWireLoggedOutFrame.png" width="600">
 
 - Champions Page

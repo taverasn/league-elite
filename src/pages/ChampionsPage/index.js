@@ -20,12 +20,12 @@ const ChampionsPage = (props) => {
         <StyledPage>
             <div className="SearchBar">
             <SearchBar
-            Champions={props.Champions}
+            champions={props.champions}
             />
             </div>
             <div className="ChampionsCard">             
                 <ChampionsCard
-                Champions={props.Champions}
+                champions={props.champions}
                 getChampionData={props.getChampionData}
                 />
             </div>
