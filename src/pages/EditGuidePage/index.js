@@ -140,7 +140,7 @@ const EditGuidePage = (props) => {
                     disabled={isFormInvalid()}
                     >Update guide</button> 
                     <button 
-                    className="btn btn-primary form-control" 
+                    className="btn btn-danger form-control" 
                     onClick={() => {
                         props.setEditing(false);
                         props.history.push('/guides');    
