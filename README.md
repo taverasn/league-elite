@@ -66,11 +66,13 @@
 
 ## Unsolved Problems
 
--
+- Figure Out a Way for The Backend to Be Able to Access API Data Instead of Typing it in Manually for Create/Edit Guide
 
 ## Future Enhancements
 
 - Add Firebase Login for Google, Twitter, etc.
 - Champion Tier Lists
-- Individual Champion Lists
+- Individual Champion Pages
 - Search by Player and View Player Data
+- Update View Guides Page to a more advance design
+- Live Game Information
