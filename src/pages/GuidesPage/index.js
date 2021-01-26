@@ -70,9 +70,16 @@ const GuidesPage = (props) => {
                                     className="btn btn-primary"
                                     onClick={() =>{
                                         props.editRow(guide);
-                                        props.history.push('/editguide');
+                                        props.history.push(`/editguide/${guide._id}`);
                                     }}
                                 >Edit</button>           
+                            </div>                  
+                            <div className="btn-group mr-2">
+                                <Link 
+                                className="btn btn-dark"
+                                key={guide._id} 
+                                to={`/guides/${guide._id}`}   
+                                >View</Link>
                             </div>                  
                             <div className="btn-group mr-2">                                
                                 <button
@@ -83,13 +90,6 @@ const GuidesPage = (props) => {
                                     }}
                                 >Delete</button>
                             </div>
-                            <div className="btn-group mr-2">
-                                <Link 
-                                className="btn btn-dark"
-                                key={guide._id} 
-                                to={`/guides/${guide._id}`}   
-                                >View</Link>
-                            </div>                  
                         </td>
                         :                       
                         

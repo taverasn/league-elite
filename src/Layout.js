@@ -73,14 +73,15 @@ function Layout(props) {
   // Guide Functions and State
   const [ guideData, setGuideData ] = useState([]);
 
-  useEffect(() => {
-      getGuides();
-  }, []);
-
   async function getGuides() {
     const data = await fetchGuideData();
     setGuideData(data);
   }
+  
+  useEffect(() => {
+      getGuides();
+  }, []);
+
 
   // Full CRUD Functions for Guides
   async function createGuide(guide) {
@@ -186,7 +187,7 @@ function Layout(props) {
               <Redirect to="/login"/>
             } />             
             {editing ? 
-              <Route exact path='/editguide' render={props =>
+              <Route exact path='/editguide/:id' render={props =>
                 <EditGuidePage 
                 {...props}
                 setEditing={setEditing}
@@ -209,7 +210,7 @@ function Layout(props) {
                 :
                 <Redirect to="/login"/>
               } />
-            }         
+            }       
           </Switch>
         </main>
       <Footer />

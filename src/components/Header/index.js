@@ -37,9 +37,9 @@ const Header = (props) => {
                         <li>
                             <Link to="/" onClick={props.handleLogout}>Log Out</Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <Link to="/dashboard">Dashboard</Link>
-                        </li>
+                        </li> */}
                         <li>
                             <Link to="/champions">Champions</Link>
                         </li>
