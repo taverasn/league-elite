@@ -2,13 +2,13 @@
 import { setToken, getUserFromToken, removeToken } from './tokenService';
 
 // Variables
-// const BASE_URL = 'http://localhost:3001/api/users';
-const DATABASE_BASE_URL = 'https://league-elite-backend.herokuapp.com/api/users';
+const DATABASE_BASE_URL = 'http://localhost:3001/api/users/';
+// const DATABASE_BASE_URL = 'https://league-elite-backend.herokuapp.com/api/users';
 
 
 // Functions
 function signup(user) {
-    return fetch(DATABASE_BASE_URL + '/signup', {
+    return fetch(DATABASE_BASE_URL + 'signup', {
         method: 'POST',
         headers: {
             'Content-Type': 'Application/json'
@@ -22,7 +22,7 @@ function signup(user) {
 }
 
 function login(credentials) {
-    return fetch(DATABASE_BASE_URL + '/login', {
+    return fetch(DATABASE_BASE_URL + 'login', {
         method: 'POST',
         headers: {
             'Content-Type': 'Application/json'
