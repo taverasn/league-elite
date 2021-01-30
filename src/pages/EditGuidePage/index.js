@@ -95,14 +95,17 @@ const EditGuidePage = (props) => {
                     </select>
                 </div>
                 <div className="form-group">                    
-                    <input 
-                    type="text" 
+                    <select
                     name="champion" 
                     value={guide.champion}
                     onChange={handleInputChange} 
-                    placeholder="Champion" 
                     className="form-control"
-                    />
+                    >
+                        <option value="">Select a Champion</option>
+                        {props.champions.map((champion, idx) =>
+                            <option key={idx} value={champion.id}>{champion.id}</option>
+                        )}
+                    </select>
                 </div>    
                 <div className="form-group">                    
                     <input 
