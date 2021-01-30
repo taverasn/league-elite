@@ -73,15 +73,14 @@ function Layout(props) {
   // Guide Functions and State
   const [ guideData, setGuideData ] = useState([]);
 
-  async function getGuides() {
-    const data = await fetchGuideData();
-    setGuideData(data);
-  }
-  
   useEffect(() => {
       getGuides();
   }, []);
 
+  async function getGuides() {
+    const data = await fetchGuideData();
+    setGuideData(data);
+  }
 
   // Full CRUD Functions for Guides
   async function createGuide(guide) {
@@ -210,7 +209,7 @@ function Layout(props) {
                 :
                 <Redirect to="/login"/>
               } />
-            }       
+            }         
           </Switch>
         </main>
       <Footer />
