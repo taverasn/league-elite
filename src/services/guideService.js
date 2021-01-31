@@ -10,10 +10,7 @@ const GUIDES_BASE_URL = 'https://league-elite-backend.herokuapp.com/api/guides/'
 // Returns All Guides from API
 function fetchGuideData() {
     const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + getToken()
-        }
+        method: 'GET'
     }
 
     return fetch(GUIDES_BASE_URL, options).then(res => res.json());
