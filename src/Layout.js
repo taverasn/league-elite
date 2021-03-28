@@ -8,6 +8,7 @@ import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashBoardPage';
 import ChampionsPage from './pages/ChampionsPage';
+import ChampionPage from './pages/ChampionPage';
 import GuidesPage from './pages/GuidesPage';
 import GuideTypePage from './pages/GuideTypePage';
 import CreateGuidePage from './pages/CreateGuidePage';
@@ -24,7 +25,7 @@ import { useState, useEffect } from 'react';
 
 // Service Imports
 import { getUser, logout } from './services/userService';
-import { getChampions} from './services/lol-api';
+import { getChampions } from './services/lol-api';
 import { fetchGuideData, addGuideData, deleteGuideData, updateGuideData, editGuideData } from './services/guideService';
 
 // Styled Component
@@ -70,7 +71,6 @@ function Layout(props) {
   useEffect(() => {
     getChampionsData();
   }, []);
-
   // Guide Functions and State
   const [ guideData, setGuideData ] = useState([]);
 
@@ -146,6 +146,15 @@ function Layout(props) {
               <ChampionsPage 
               {...props}
               champions={championsData}
+              />
+              :
+              <Redirect to="/login"/>
+            } />             
+            <Route exact path='/champions/:id' render={props =>
+              userState.user ?
+              <ChampionPage 
+                {...props}
+                champion={championsData.filter((champion) => (champion.id === props.match.params.id))}
               />
               :
               <Redirect to="/login"/>
