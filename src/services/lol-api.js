@@ -10,8 +10,8 @@ function getChampions() {
 }
 
 // Retrieves a Single Champion from API
-function getSingleChampion(championName) {
-    return fetch(BASE_URL + 'champion/' + championName + '.json')
+function getSingleChampion(championId) {
+    return fetch(BASE_URL + 'champion/' + championId + '.json')
     .then(res => res.json());
 }
 
