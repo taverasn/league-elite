@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashBoardPage';
 import ChampionsPage from './pages/ChampionsPage';
 import GuidesPage from './pages/GuidesPage';
+import GuideTypePage from './pages/GuideTypePage';
 import CreateGuidePage from './pages/CreateGuidePage';
 import EditGuidePage from './pages/EditGuidePage';
 import GuideDetailPage from './pages/GuideDetailPage';
@@ -154,6 +155,40 @@ function Layout(props) {
               <GuidesPage 
               {...props}
               guides={guideData}
+              user={userState.user}
+              />
+              :
+              <Redirect to="/login"/>
+            } />             
+            <Route exact path='/guides/champions' render={props =>
+              userState.user ?
+              <GuideTypePage 
+              {...props}
+              guides={guideData.filter((guide) => (guide.type === 'Champion'))}
+              editRow={editRow}
+              deleteGuide={deleteGuide}
+              user={userState.user}
+              />
+              :
+              <Redirect to="/login"/>
+            } />             
+            <Route exact path='/guides/lane' render={props =>
+              userState.user ?
+              <GuideTypePage 
+              {...props}
+              guides={guideData.filter((guide) => (guide.type === 'Lane'))}
+              editRow={editRow}
+              deleteGuide={deleteGuide}
+              user={userState.user}
+              />
+              :
+              <Redirect to="/login"/>
+            } />             
+            <Route exact path='/guides/general' render={props =>
+              userState.user ?
+              <GuideTypePage 
+              {...props}
+              guides={guideData.filter((guide) => (guide.type === 'General'))}
               editRow={editRow}
               deleteGuide={deleteGuide}
               user={userState.user}
