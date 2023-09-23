@@ -2,8 +2,9 @@
 import { getToken } from "./tokenService";
 
 // Variables
-const GUIDES_BASE_URL = "http://localhost:3001/api/guides/";
-//const GUIDES_BASE_URL = 'https://league-elite-backend.herokuapp.com/api/guides/';
+//const GUIDES_BASE_URL = "http://localhost:3001/api/guides/";
+const GUIDES_BASE_URL =
+  "https://league-elite-backend.herokuapp.com/api/guides/";
 
 //Functions
 

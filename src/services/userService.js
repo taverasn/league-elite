@@ -2,8 +2,9 @@
 import { setToken, getUserFromToken, removeToken } from "./tokenService";
 
 // Variables
-const DATABASE_BASE_URL = "http://localhost:3001/api/users/";
-//const DATABASE_BASE_URL = 'https://league-elite-backend.herokuapp.com/api/users/';
+//const DATABASE_BASE_URL = "http://localhost:3001/api/users/";
+const DATABASE_BASE_URL =
+  "https://league-elite-backend.herokuapp.com/api/users/";
 
 // Functions
 function signup(user) {
